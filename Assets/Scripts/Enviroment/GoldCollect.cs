@@ -1,0 +1,22 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class GoldCollect : MonoBehaviour
+{
+    public GameObject goldIngots;
+    public AudioSource collectSound;
+    public GameObject pickUpDisplay;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GlobalScore.scoreValue += 500;
+        GlobalComplete.treasureCount += 1;
+        goldIngots.SetActive(false);
+        collectSound.Play();
+        pickUpDisplay.SetActive(false);
+        pickUpDisplay.GetComponent<Text>().text = "GOLD INGOTS";
+        pickUpDisplay.SetActive(true);
+    }
+}
